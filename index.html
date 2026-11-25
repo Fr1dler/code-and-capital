@@ -95,27 +95,12 @@ body {
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
 <script>
-  (function() {
-    function nukeNetlifyBadge() {
-      document.querySelectorAll('div, a, aside, iframe, section, span, [id*="netlify"], [class*="netlify"]').forEach(function(el) {
-        if (el.id === 'canvas' || el.tagName === 'BODY' || el.tagName === 'HTML') return;
-        var text = (el.innerText || el.textContent || '').trim();
-        var href = el.getAttribute('href') || '';
-        var src = el.getAttribute('src') || '';
-        var style = window.getComputedStyle(el);
-        var isBottomRight = style.position === 'fixed' && parseInt(style.bottom) >= 0 && parseInt(style.bottom) < 60 && parseInt(style.right) >= 0 && parseInt(style.right) < 60;
-
-        if ((text === 'Powered by Netlify' || href.includes('netlify.com') || src.includes('netlify') || (isBottomRight && el.shadowRoot)) && el.offsetHeight < 100) {
-          el.style.setProperty('display', 'none', 'important');
-          el.remove();
-        }
-      });
+  window.addEventListener('load', function() {
+    if (window.Telegram && window.Telegram.WebApp) {
+      window.Telegram.WebApp.ready();
+      window.Telegram.WebApp.expand();
     }
-    var observer = new MutationObserver(nukeNetlifyBadge);
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-    setInterval(nukeNetlifyBadge, 300);
-    window.addEventListener('load', nukeNetlifyBadge);
-  })();
+  });
 </script>
 	</head>
 	<body>
@@ -135,7 +120,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":2973240,"index.wasm":37902138},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":2973960,"index.wasm":37902138},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
